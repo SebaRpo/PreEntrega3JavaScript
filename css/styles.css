@@ -1,0 +1,524 @@
+/* Establecemos que todos los elementos del documento tengan un margen, padding y un box-sizing igual a cero */
+/*Mobile First*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* Establecemos la fuente de texto para todo el documento */
+body{
+    font-family: 'Roboto', sans-serif;
+}
+/* Establecemos un contenedor para centrar los elementos y evitar que se sobresalgan del límite de la página */
+.contenedor{
+    margin: 0 auto;/* Centramos el contenedor */
+    width: 90%;/* Establecemos un ancho del 90% */
+    max-width: 1200px;/* Establecemos un ancho máximo */
+    overflow: hidden;/* Ocultamos cualquier contenido que sobresalga */ 
+    z-index: 10;    
+}
+/* Establecemos un estilo para el encabezado */
+.encabezado{
+    background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.5)),
+    url('../img/Background1.jpg');/* Establecemos una imagen de fondo, además utilizamos dos colores: uno con una transparencia del 10% (rgba(0, 0, 0, 0.1)) y otro con una transparencia del 20% (rgba(0, 0, 0, 0.2)) */
+    background-size: cover;/* Ajustamos la imagen al tamaño del contenedor */
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    min-height: 15vh;/* Establecemos una altura mínima */
+    height: 15vh;/* Establecemos una altura igual a la pantalla  */
+    color: #fff;/* Establecemos el color de texto */ 
+    position: sticky;
+    top: 0;
+    
+}
+/* Establecemos estilos para el menú de navegación */
+.nav{
+    /* Establecemos variables para controlar el estado del menú */
+    --state-close: scale(0);/*se escalará en un 0%, es decir, desaparecerá*/
+    --state-hamburguer:scale(1);/*se escalará en un 100%, es decir, aparecerá*/
+    --state-menu: translate(-100%);/*se moverá hacia la izquierda en un 100% de su tamaño, es decir, desaparecerá de la pantalla*/
+    padding: 40px 0;/* Establecemos un padding superior e inferior */
+    display: grid;/* Utilizamos una grilla para organizar los elementos */
+    justify-content: space-between;/* Justificamos los elementos en el espacio entre el logo y el botón de menú */
+    align-items: center;/* Alineamos los elementos en el centro */
+    grid-template-columns: repeat(2, max-content);/* una cuadrícula de 2 columnas cuyo tamaño se ajusta al contenido más grande dentro de cada columna */
+    z-index: 10;/* Establecemos el orden de los elementos */
+
+}
+/* Establecemos un estilo para cuando el menú esté activo */
+.nav:target{
+    --state-menu: translate(0);/*  Mostramos el menú */
+    --state-close: scale(1);/* Mostramos el botón de cerrar */
+    --state-hamburguer:scale(0);/* Ocultamos el botón de menú */ 
+}
+/* Establecemos estilos para el logo */
+.nav__logo{
+    font-size: 2.5rem;/* Establecemos el tamaño del texto es una guía cuando la imagen del logo no esta */
+    z-index: 10;/* Establecemos el orden de los elementos */
+}
+/* Establecemos estilos para la imagen del logo */
+.logo{
+    height: 2.4rem;/* Establecemos una altura para la imagen */
+}
+
+.nav__hamburguer, 
+.nav__close{
+    cursor: pointer;/* Establecemos el cursor como pointer para indicar que son clickeables */
+    grid-column: -2/-1;/* Posicionamos los 2 botones en la última columna */
+    grid-row: 1/2;/* Posicionamos los 2 botones en la primera fila */
+    transition: .4s transform;/* Establecemos una transición para cuando se active el menú */
+
+}
+
+.nav__hamburguer{
+    transform: var(--state-hamburguer);/*Permite que cambie su apariencia dinámicamente en función del valor asignado a la variable*/
+}
+
+.nav__close{
+    transform: var(--state-close);
+}
+
+.nav__icon{
+    width: 40px;
+}
+
+.nav__links{
+    background-color: #000;/* Establecemos un color de fondo */
+    position: absolute;/* Posicionamos los enlaces en una posición absoluta */
+    top: 0;/* Posicionamos los enlaces en la parte superior */
+    bottom: 0;/* Posicionamos los enlaces en la parte inferior */
+    left: 0;/* Posicionamos los enlaces en la parte izquierda */
+    right: 0;/* Posicionamos los enlaces en la parte derecha */
+    padding: 0;/* Establecemos un padding igual a cero */
+
+    display: grid;/* Utilizamos una grilla para organizar los enlaces */
+    align-content: center;/* Alineamos los enlaces al centro */
+    gap: 2em;/* Establecemos un espacio entre los enlaces */
+    padding-left: 5%;/* Establecemos un padding izquierdo */
+
+    transform: var(--state-menu); /* Utilizamos la variable para controlar la posición del menú */
+    transition: .3s transform;/* Establecemos una transición para cuando se active el menú */
+    position:sticky;
+    top: 0%;
+    z-index: 10;
+}
+/* Establecemos estilos para los enlaces del menú secundario */
+.secmenu{
+    list-style: none;/* Quitamos los viñetas de la lista secundaria*/
+}
+.secmenu__li--a{
+    color: #fff;/* Establecemos el color de texto */
+    text-decoration: none;/* Quitamos la decoración de los enlaces */
+    font-size: 1rem;/* Establecemos el tamaño del texto */
+    letter-spacing: 2px;/* Establecemos el espaciado entre letras */
+    margin-left: 10px;
+    padding: 10px;
+}
+/* Establecemos estilos para los elementos de la lista del menú principal */
+.nav__item{
+    list-style: none;/* Quitamos los viñetas de la lista */
+}
+.nav__item--sec{
+    list-style: none;/* Quitamos los viñetas de la lista */
+}
+/* Establecemos estilos para los enlaces del menú principal */
+.nav__link{
+    color: #fff; /* Establecemos el color de texto */
+    text-decoration: none;/* Quitamos la decoración de los enlaces */
+    font-size: 1.2rem;/* Establecemos el tamaño del texto */
+    letter-spacing: 2px;/* Establecemos el espaciado entre letras */
+}
+
+ 
+/* Estilos del Main */
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1.5rem;
+}
+.banner1{
+    margin: 1rem;
+    width: 80%;
+    flex-direction: column;
+
+}
+
+.masVistos__h3{
+    background-color: transparent;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 1.3rem;
+    border: 1px solid white;
+    letter-spacing: 0.001rem;
+    padding: 0;
+    margin-bottom:1rem ;
+    transition: 0.5s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Staatliches', cursive;
+
+}
+.productosBanner img{
+    border-radius: 2px;
+    box-shadow: 0rem 0.2rem 0.7rem rgba(0, 0, 0, 0.5);
+}
+
+main img{
+    width: 80%; 
+}
+
+.c-img{
+    filter: brightness(0.8);
+}
+
+.slider{
+    display: flex;
+    max-width: 40rem;
+    width: 100%;
+    border-radius: 2px;
+    box-shadow: 0rem 0.5rem 0.7rem rgba(0, 0, 0, 0.5);
+
+}
+.slider img{
+    width: 100%;
+    scroll-snap-align: center;
+    
+} 
+
+.piePagina{
+    background-image: url(../img/FooterBackground1.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    text-align: center;
+    height: 15rem;
+    padding: 2rem;
+}
+.piePagina__text{
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: #fff;
+    display: none;
+}
+.piePagina__text p span{
+    display: flex;
+    
+}
+.piePagina__redes{
+        display: flex;
+      
+}
+.piePagina__redes img{
+    height: 2.5rem;
+    margin-bottom: 1rem;
+    filter: invert(100%);
+    padding: 5%;  
+}
+
+/*Pagina de vestidos y Algo más*/
+/*Mobile first*/
+
+.cproductos{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows:  auto;
+    grid-template-areas: 
+    "img img img"
+    "p p p";
+    
+
+}
+/* .productos{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows:  auto;
+    grid-template-areas: 
+    "img img img"
+    "p p p";
+} */
+.productos__producto{
+    max-width: 15rem;
+    display: flex;
+    flex-flow: column;
+    border-radius: 6px;
+    box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.2);
+    align-items: center;
+}
+.productos__informacion{
+    border-top: 1px rgb(230, 230, 230);
+    padding: 1rem;
+    display: flex;
+    flex-flow: column;
+    text-align: center;
+    font-size: 0.8rem; 
+}
+.precio{
+    font-weight: bold;
+}
+.productos__producto img{
+    grid-area:img;
+}
+.productos__informacion{
+    grid-area:p;
+    justify-content: space-between;
+    border-top: 1px rgb(230, 230, 230);
+    padding: 1rem;
+    display: flex;
+    flex-flow: column;
+}
+
+
+/* Establecemos una regla de media query para cuando la pantalla sea de 600px */
+/*Tablet*/
+@media screen and (min-width:600px) {
+    .encabezado{
+        background-image: 
+        linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.5)),
+        url('../img/Background1.jpg');/* Establecemos una imagen de fondo, además utilizamos dos colores: uno con una transparencia del 10% (rgba(0, 0, 0, 0.1)) y otro con una transparencia del 20% (rgba(0, 0, 0, 0.2)) */
+        background-repeat: no-repeat;/* Ajustamos la imagen al tamaño del contenedor */
+        background-position: center;
+        background-size: cover;
+        min-height: 12vh;/* Establecemos una altura mínima */
+        height: 12vh;/* Establecemos una altura igual a la pantalla  */
+        color: #fff;/* Establecemos el color de texto */ 
+    }
+
+    /* Ocultamos el botón de menú y mostramos el menú */
+    .nav{
+        --state-hamburguer:scale(0);
+        --state-menu: translate(0);
+    }
+    /* Ocultamos el botón de cerrar cuando el menú esté activo */
+    .nav:target{
+        --state-close: scale(0);
+    }
+    /* Removemos la posición absoluta y el color de fondo de los enlaces del menú */
+    .nav__links{
+        padding: 0;
+        background-color: unset;
+        position: unset;
+        gap: 1.5em;/* Establecemos un espacio entre los enlaces */
+        grid-auto-flow: column;/* Establecemos que los enlaces se organizarán en columnas */
+    
+        transform: unset;/* Removemos la transformación */
+
+        grid-column: -2/-1; /* Posicionamos los enlaces en la última columna */
+        grid-row: 1/2;/* Posicionamos los enlaces en la primera fila */
+    }
+    /* Establecemos estilos para los enlaces del menú principal cuando la pantalla es mayor a 768px */
+    .nav__link{
+        font-size: 1rem;/* Establecemos el tamaño del texto */
+        letter-spacing: none;/* Removemos el espaciado entre letras */
+    }
+    /* Establecemos un estilo al pasar el cursor sobre los elementos de la lista del menú principal */
+    .nav__item:hover{
+        transform: scale(1);/* Aumentamos el tamaño del elemento */
+        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);/* Establecemos una sombra */
+        visibility: visible;/* Hacemos visible el elemento */
+        opacity: 1;
+    }
+     /* Establecemos un estilo al pasar el cursor sobre los elementos de la lista del menú secundario */
+    .nav__item--sec:hover .secmenu{
+        transform: scale(1);/* Aumentamos el tamaño del elemento */
+        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);/* Establecemos una sombra */
+        display: block;/* Mostramos el menú secundario */
+    }
+    .notifi{
+        display: none;
+    }
+
+    /* Establecemos estilos para el menú secundario */
+    
+    .secmenu{
+        width: 200px;/* Establecemos un ancho */
+        display: flex;/* Utilizamos flexbox para organizar los elementos */
+        flex-direction: column;/* Establecemos que los elementos se organizarán en columnas */
+        align-items: center; /* Alineamos los elementos al centro*/
+        color: #fff;
+        position: absolute;/* Posicionamos el menú secundario en una posición absoluta */
+        top: 75px;
+        display: none;
+        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+        z-index: 10;
+        list-style: none;
+        background-color:white;
+    }
+    .nav__item--sec a:hover{
+        transform: scale(1);/* Aumentamos el tamaño del elemento */
+        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);/* Establecemos una sombra */
+        display: block;/* Mostramos el menú secundario */
+    }
+    .secmenu__li--a{
+        display: block;
+        color: black;
+        padding: 1px;
+        margin-left: 0;
+        text-decoration: none;/* Quitamos la decoración de los enlaces */
+    }
+    .secmenu__li{
+        text-decoration: none;
+    }
+    .secmenu__li--a:hover{
+        transform: scale(1);/*cambia su tamaño (escalando) cuando el cursor del mouse está sobre él*/
+    }
+    .piePagina{
+        background-image: url(../img/FooterBackground1.png);
+        background-repeat: no-repeat;
+        background-size: fixed;
+        background-position: 90% 10%;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        text-align: center;
+        height: 15rem;
+        padding: 2rem;
+    }
+
+    .piePagina__text{
+        display: block;
+        font-family: 'Roboto', sans-serif;
+        font-weight: bold;
+        font-size: 0.9rem;
+        color: #fff;
+    }
+}
+    /*Pagina de vestidos y Algo más*/
+    .productos{
+/*         display: flex;
+        gap: 1rem;
+        margin-top: 2rem;
+        
+    } */
+    .productos__producto{
+        max-width: 280px;
+        display: flex;
+        flex-flow: column;
+        border-radius: 6px;
+        box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        transition-property: box-shadow;
+        transition-duration: 0.3s;
+    }
+    .productos__producto select{
+        display: block;
+        height: 30px;
+        padding: 6px;
+        font-size: 15px;
+        margin: 5px;
+    }
+    .productos__producto input{
+        width: 40px;
+        height: 30px;
+        padding: 6px;
+        font-size: 15px;
+        margin: 10px;
+    }
+    .productos__producto button{
+        margin-bottom: 10px;
+    }
+
+    .productos__producto:hover{
+        box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.2);
+    }
+    .productos__producto > img{
+        width: 100%;
+        object-fit: cover;
+    }
+    .productos__informacion{
+        border-top: 1px rgb(230, 230, 230);
+        padding: 1rem;
+        display: flex;
+        flex-flow: column;
+    }
+    .precio{
+        font-size: 1rem;
+        font-weight: bold;
+    }
+    /*Pagina de personalizados*/
+    .contenedorSeccion__Personalizadosblog--p1{
+
+        font-size:1.5rem;
+    }
+    .contenedorSeccion__Personalizadosblog--p2{
+
+        font-size:1.5rem;
+    }
+    .img1Perso{
+        grid-area: img1;
+        width: 100%;
+    }
+    .img2Perso{
+        grid-area: img2;
+        width: 100%;
+    }
+    .SeccionFr img{
+        width: 40%;
+    }
+ 
+}
+
+
+
+
+/* Establecemos una regla de media query para cuando la pantalla sea de 1024px */
+/* Estilos de pantalla de escritorio */
+@media screen and (min-width:1024px){
+    .logo{
+        height: 3.6rem;/* Establecemos una altura para la imagen */
+    }
+
+    .productosBanner img{
+        border-radius: 2px;
+        box-shadow: 0rem 0.2rem 0.7rem rgba(0, 0, 0, 0.5);
+        width: 80%; 
+    }
+    .masVistos{
+    display: flex;
+    }
+    .masVistos__h3{
+        font-size: 2.6rem;
+    }
+    .nav__link{
+        color: #fff; /* Establecemos el color de texto */
+        text-decoration: none;/* Quitamos la decoración de los enlaces */
+        font-size: 1.3rem;/* Establecemos el tamaño del texto */
+        letter-spacing: 2px;/* Establecemos el espaciado entre letras */
+    }
+
+    .piePagina{
+        background-image: url(../img/FooterBackground1.png);
+        background-repeat: no-repeat;
+        background-size: fixed;
+        background-position: 95% 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        text-align: center;
+        height: 15rem;
+        padding: 2rem;
+    }
+
+    .SeccionFr {
+        grid-column: 1/13;
+        width: min(60rem, 100% );
+        margin: 0 auto;
+        margin-bottom: 3rem;
+    }
+    
+    .SeccionFr fieldset {
+        border: none;
+    }
+    .SeccionFr legend {
+        text-align: center;
+        font-size: 2rem;
+        font-weight: 600;
+    }
+}
