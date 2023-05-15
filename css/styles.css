@@ -17,6 +17,8 @@ body{
     overflow: hidden;/* Ocultamos cualquier contenido que sobresalga */ 
     z-index: 10;    
 }
+
+
 /* Establecemos un estilo para el encabezado */
 .encabezado{
     background-image: 
@@ -131,6 +133,112 @@ body{
     letter-spacing: 2px;/* Establecemos el espaciado entre letras */
 }
 
+/* Carro */
+.cart{
+    position: fixed;   
+    overflow: hidden;
+    top: 0;
+    right: -100%;
+    width: 360px;
+    min-height: 100vh;
+    padding: 20px;
+    background-color: whitesmoke;
+    box-shadow: -2px 0 4px hsl(0 4% 15% / 10%);
+    z-index: 11;
+    transition: .3s;
+}
+.cart.active {
+    right: 0;
+}
+button {
+    background: transparent;
+    border: 0;
+    padding: 0;
+}
+.carrito-titulo{
+    text-align: center;
+    font-size: 1.9rem;
+    font-weight: 600;
+    margin-top: 2rem;
+    color: #000;
+}
+
+.caja-carrito{
+    display: grid;  
+    grid-template-columns: 32% 50% 18%;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.cart-img{
+    width: 90%;
+    object-fit: contain;
+    padding: 10px;
+}
+.detalleCaja{
+    display: grid;
+    row-gap: 0.5rem;
+}
+.carroTituloProducto{
+    font-size: 1.1rem;
+    color: #000;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.carroPrecio{
+    font-weight: 400;
+    color: #000;
+    font-size: 1.1rem;
+}
+.cantidadCarrito{
+    border: 1px rgb(10, 66, 63);
+    outline-color: rgb(10, 66, 63);
+    width: 2.4rem;
+    text-align: center;
+    font-size: 1.1rem;
+    color: #000;
+    display: flex row;
+}
+.cart-remove{
+    font-size: 24px;
+    color: #000;
+    cursor: pointer;
+}
+.total{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1.5rem;
+    border-top: 1px solid rgb(10, 66, 63);
+}
+.tituloTotal{
+    font-size: 1rem;
+    font-weight: 600;
+    color: #000;
+    margin-right: 5px;
+}
+.tituloPrecio{
+    font-size: 1rem;
+    color: #000;
+    
+}
+.botonTotal{
+    display: flex;
+    margin: 1.5rem auto 0 auto;
+    padding: 12px 20px;
+    
+}
+#close-cart{
+    position: absolute;
+    top: 1rem;
+    right: 0.8rem;
+    font-size: 2rem;
+    color: rgb(66, 89, 89);
+    cursor: pointer;
+}
+.linkCarro{
+    text-decoration: none;
+}
  
 /* Estilos del Main */
 main{
@@ -332,7 +440,8 @@ main img{
         display: block;/* Mostramos el menú secundario */
     }
     .notifi{
-        display: none;
+        font-size: 1rem;
+        display: flexbox;
     }
 
     /* Establecemos estilos para el menú secundario */
@@ -392,11 +501,11 @@ main img{
 }
     /*Pagina de vestidos y Algo más*/
     .productos{
-/*         display: flex;
-        gap: 1rem;
-        margin-top: 2rem;
-        
-    } */
+         
+        gap: 2rem;
+        margin-top: 5rem;
+       
+    } 
     .productos__producto{
         max-width: 280px;
         display: flex;
@@ -404,6 +513,7 @@ main img{
         border-radius: 6px;
         box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.2);
         cursor: pointer;
+        margin: 10px;
         transition-property: box-shadow;
         transition-duration: 0.3s;
     }
@@ -463,7 +573,7 @@ main img{
         width: 40%;
     }
  
-}
+
 
 
 
